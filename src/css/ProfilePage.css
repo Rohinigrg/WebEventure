@@ -1,0 +1,128 @@
+/* Layout containers */
+.dashboard-wrapper {
+  display: flex;
+  height: 100vh;
+  background-color: #fff;
+}
+
+.main-content {
+  flex: 1;
+  padding: 40px;
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header Bar styling */
+.profile-header-container {
+  background: white;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.profile-header-bar {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 10px 20px;
+  border: 1px solid #ddd;
+}
+
+/* THE GRAY FRAME */
+.profile-card-frame {
+  background: white;
+  border: 15px solid #d3d3d3; /* Thick gray border from your design */
+  padding: 60px;
+  flex: 1;
+}
+
+.profile-flex-container {
+  display: flex;
+  gap: 100px;
+  justify-content: center;
+}
+
+/* Avatar Section */
+.profile-left-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.avatar-circle {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid #ccc;
+}
+
+.avatar-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.edit-profile-btn {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Form Section */
+.profile-right-section {
+  flex: 1;
+  max-width: 500px;
+}
+
+.profile-input-group {
+  margin-bottom: 20px;
+}
+
+.profile-input-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+}
+
+.profile-input-group input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #000;
+  border-radius: 12px;
+}
+
+/* Action Buttons */
+.profile-actions-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; 
+  gap : 15px;
+  margin-top: 40px;
+}
+
+.profile-logout-btn {
+  background-color: #4b4b4b; 
+  color: white;
+  border: none;
+  padding: 12px 45px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.delete-account-btn {
+  background-color: #ff0000; /* Red */
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}

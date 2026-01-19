@@ -2,7 +2,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import UserDashboard from "../page/Private/UserDashboard";
 import AdminDashboard from "../page/Private/AdminDashboard";
 import ManageEvents from "../page/Private/ManageEvent";
-import UserProfile from "../page/Private/UserProfile"; // Ensure this is imported
+import ProfilePage from "../page/Private/ProfilePage"; // Ensure this is imported
 
 const PrivateRoutes = () => {
   const role = localStorage.getItem("role");
