@@ -3,8 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 300px;
-}
+  margin: 0;}
 
 .register-card {
   width: 1000px;          
@@ -28,17 +27,15 @@
   padding: 40px; 
 }
 
-
 .register-logo {
   width: 80px;
   margin-bottom: 15px;
 }
+
 .register-right {
   width: 55%;
-  padding: 35px 40px; 
-  
+  padding: 35px 40px;   
 }
-
 
 .register-right h2 {
   margin-bottom: 5px;

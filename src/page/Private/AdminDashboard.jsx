@@ -23,10 +23,11 @@ const AdminDashboard = () => {
       .catch((err) => console.error("Error fetching events:", err));
   }, []);
   
-  const handleLogout = () => {
-    localStorage.clear(); // Clear session data
-    navigate("/login");    // Navigate back to login page
-  };
+const handleLogout = () => {
+  localStorage.clear();                // clear token/role
+  navigate("/login", { replace: true }); // redirect to login page
+};
+
 
   const handleRemove = (id) => {
     // Logic to delete event from backend
@@ -59,8 +60,10 @@ const AdminDashboard = () => {
         </button>
         </nav>
 
-        <button className="logout-btn">Log Out</button>
-      </aside>
+        <button className="logout-btn" onClick={handleLogout}>
+         Log Out
+       </button>
+        </aside>
 
       {/* MAIN CONTENT */}
       <main className="admin-main">

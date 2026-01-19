@@ -10,16 +10,21 @@ body, html {
   overflow-x: hidden;
 }
 
-
 .landing {
   min-height: 100vh;
   width: 100%;
   background-size: cover;
-  background-position: center;
+  background-position: center right;
   background-repeat: no-repeat;
-  padding: 30px 60px;
+  padding: 30px 0;
 }
 
+.content-wrapper {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 40px; /* Restores the side spacing */
+}
 
 /* Navbar */
 .navbar {
@@ -27,11 +32,14 @@ body, html {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 10px o;
+  text-decoration: none;
 }
 
 .logo {
   display: flex;
   align-items: center;
+  padding-left: 10px;
 }
 
 .logo img {
@@ -40,7 +48,6 @@ body, html {
 }
 
 .nav-buttons {
-  margin-left: auto;
   display: flex;
   gap: 15px;
 }
@@ -57,52 +64,75 @@ body, html {
   background: white;
   color: #4f46e5;
   border: 2px solid #4f46e5;
+  font-style: italic;
 }
 
 .btn.filled {
   background: #4f46e5;
   color: white;
+  font-style: italic;
 }
 
 /* Hero section */
 .hero {
   margin-top: 100px;
   max-width: 600px;
+  padding-left: 30px;
 }
 
 .hero h1 {
-  font-size: 48px;
+  font-size: 50px;
   color: #1e40af;
   line-height: 1.2;
+  font-style: italic;
+
 }
 
 .hero p {
   margin-top: 20px;
   color: #555;
-  font-size: 17px;
+  font-size: 20px;
+  font-style: italic;
+
 }
 
 /* Cards */
 .cards {
-  margin-top: 120px;
+  margin-left: 240px;
+  margin-top: 210px; /* Reduced from 120px to look tighter */
   display: flex;
-  gap: 30px;
+  gap: 40px; /* Smaller gap between cards */
+  justify-content: flex-start; /* Keeps them aligned to the left under the text */
+  flex-wrap: wrap;
+}
+.card:hover {
+  transform: translateY(-5px);
 }
 
 .card {
   background: white;
-  padding: 25px;
-  border-radius: 10px;
-  width: 280px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  padding: 30px 25px; /* More vertical padding, less horizontal */
+  border-radius: 12px; /* Slightly rounder corners for a modern look */
+  
+  /* FIXED WIDTH: This is the key to making them smaller */
+  width: 260px; 
+  flex: none; /* Prevents the card from growing to fill the screen */
+  
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* Softer, more subtle shadow */
+  transition: transform 0.2s ease;
 }
 
 .card h3 {
   color: #4f46e5;
-  margin-bottom: 10px;
+  font-size: 1.25rem; /* Matches the "small" heading feel */
+  margin-bottom: 12px;
+  font-weight: 700;
+  font-style: italic;
 }
 
 .card p {
-  color: #444;
-  font-size: 14px;
+  color: #666; /* Slightly lighter gray */
+  font-size: 0.9rem; /* Smaller font size for the description */
+  line-height: 1.5; /* Better readability */
+  font-style: italic;
 }

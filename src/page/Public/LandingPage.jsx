@@ -28,7 +28,7 @@ const LandingPage = () => {
         <h1>Community Event<br />Management System</h1>
         <p>
           Organize, manage and promote<br />
-          events for your community in one platform
+          events for your community in one platform!
         </p>
       </div>
 

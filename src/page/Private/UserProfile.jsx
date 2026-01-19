@@ -1,10 +1,15 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "../../css/UserProfile.css"; // Ensure this path is 100% correct
+import "../../css/ProfilePage.css"; // Ensure this path is 100% correct
 import Logoo from "../../assets/Logoo.png";
 
 const UserProfile = () => {
   const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.clear();
+    window.location.href = "/login"; 
+    };
 
   return (
     <div className="dashboard-wrapper">
@@ -35,7 +40,7 @@ const UserProfile = () => {
             {/* Left: Image and Edit Button */}
             <div className="profile-left-section">
               <div className="avatar-circle">
-                <img src="https://via.placeholder.com/150" alt="Profile" />
+                <img src="profile.png" alt="Profile" />
               </div>
               <button className="edit-profile-btn">Edit Profile</button>
             </div>
@@ -60,8 +65,10 @@ const UserProfile = () => {
               </div>
 
               <div className="profile-actions-container">
-                <button className="profile-logout-btn">Log Out</button>
-                <button className="delete-account-btn">Delete Account</button>
+              <button className="profile-logout-btn" onClick={handleLogout}>
+                Log Out
+              </button>                
+              <button className="delete-account-btn">Delete Account</button>
               </div>
             </div>
 

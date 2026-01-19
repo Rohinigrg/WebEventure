@@ -14,22 +14,23 @@ const Login = () => {
   const navigate = useNavigate(); // 👈 added
 
   const handleLogin = (e) => {
-    e.preventDefault();
-    if (!email || !password) {
-      setError("Please fill all fields");
-      return;
-    }
+   e.preventDefault();
+   if (!email || !password) {
+     setError("Please fill all fields");
+     return;
+   }
 
-    if (email === "admin@gmail.com" && password === "admin123") {
-      localStorage.setItem("role", "admin");
-      navigate("/admindashboard");
-      return;
-    }
+   if (email === "admin@gmail.com" && password === "admin123") {
+    localStorage.setItem("role", "admin");
+    navigate("/admin/dashboard", { replace: true }); // Correct path
+    return;
+  }
 
-    // ✅ NORMAL USER LOGIN
-    localStorage.setItem("role", "user");
-    navigate("/userdashboard");
+  // Normal user
+   localStorage.setItem("role", "user");
+   navigate("/user/dashboard", { replace: true }); // Correct path
   };
+
 
   return (
     <div className="login-page">

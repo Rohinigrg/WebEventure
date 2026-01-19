@@ -3,13 +3,14 @@ import UserDashboard from "../page/Private/UserDashboard";
 import AdminDashboard from "../page/Private/AdminDashboard";
 import ManageEvents from "../page/Private/ManageEvent";
 import ProfilePage from "../page/Private/ProfilePage"; // Ensure this is imported
+import Login from "../page/Public/Login";
 
 const PrivateRoutes = () => {
   const role = localStorage.getItem("role");
 
   // 1. Redirect to login if no role is found
   if (!role) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/login" replace/>;
   }
 
   return (
@@ -24,7 +25,7 @@ const PrivateRoutes = () => {
       {role === "user" && (
         <>
           <Route path="/user/dashboard" element={<UserDashboard />} />
-          <Route path="/user/profile" element={<UserProfile />} />
+          <Route path="/user/profile" element={<ProfilePage />} />
         </>
       )}
 

@@ -1,5 +1,4 @@
 * {
-  max-width: 1200px;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -9,9 +8,17 @@
 .dashboard-wrapper {
   display: flex;
   height: 100vh;
-  width: 150vw;
+  width: 100%;
   background-color: #4a3e3e;
   overflow: hidden;
+}
+.main-content {
+  flex: 1;
+  padding: 40px;
+  background-color: gainsboro;
+  flex-direction: column;
+  display: flex;
+  overflow-y: auto; /* Allows scrolling inside the dashboard only */
 }
 
 /* SIDEBAR STYLING */

@@ -8,7 +8,7 @@
 .main-content {
   flex: 1;
   padding: 40px;
-  background-color: #f9f9f9;
+  background-color: lightgray;
   display: flex;
   flex-direction: column;
 }
@@ -31,7 +31,7 @@
 /* THE GRAY FRAME */
 .profile-card-frame {
   background: white;
-  border: 15px solid #d3d3d3; /* Thick gray border from your design */
+  border: 15px solid white; /* Thick gray border from your design */
   padding: 60px;
   flex: 1;
 }

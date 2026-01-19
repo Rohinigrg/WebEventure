@@ -9,6 +9,12 @@ const UserDashboard = () => {
   const location = useLocation();
   const [events, setEvents] = useState([]);
 
+  const handleLogout = () => {
+  localStorage.clear();                // clear token/role
+  navigate("/login", { replace: true }); // redirect to login page
+};
+
+
   // Fetch events from backend
   useEffect(() => {
     axios
@@ -53,6 +59,8 @@ const UserDashboard = () => {
             Profile
           </button>
         </nav>
+
+
       </aside>
 
       {/* MAIN CONTENT */}
