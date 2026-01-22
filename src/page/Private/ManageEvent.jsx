@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "../../css/AdminDashboard.css"; 
+import "../../css/ManageEvent.css"; 
 import Logoo from "../../assets/logoo.png";
 // 1. Import navigation hooks
 import { useNavigate, useLocation } from "react-router-dom";
@@ -31,11 +31,14 @@ const ManageEvents = () => {
     setEventData({ ...eventData, [name]: value });
   };
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    setEventData({ ...eventData, image: file });
-    setPreview(URL.createObjectURL(file));
-  };
+const handleImageChange = (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+
+  setEventData({ ...eventData, image: file });
+  setPreview(URL.createObjectURL(file));
+};
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -97,12 +100,12 @@ const ManageEvents = () => {
             <div className="image-upload-container">
               <label htmlFor="image-input" className="image-preview-box">
                 {preview ? (
-                  <img src={preview} alt="Preview" />
+                  <img src={preview} alt="Event Preview"  className="displayed-image"/>
                 ) : (
-                  <div className="camera-icon">📷</div>
+                  <span className="camera-icon">📷</span>
                 )}
               </label>
-              <input type="file" id="image-input" hidden accept="image/*" onChange={handleImageChange} required />
+              <input type="file" id="image-input" hidden accept="image/*" onChange={handleImageChange} />
             </div>
 
             <div className="form-fields">

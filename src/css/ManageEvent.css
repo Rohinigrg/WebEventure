@@ -1,39 +1,49 @@
-/* Figma Gray Frame */
+
 .admin-content-card {
   background: white;
-  border: 15px solid #dcdcdc; /* Gray thick frame */
+  border: 15px solid #dcdcdc; /* Gray thick frame from your design */
   padding: 40px;
   display: flex;
   justify-content: center;
 }
 
+/* Side-by-side layout */
 .manage-event-form {
   display: flex;
-  gap: 50px;
+  flex-direction: row; /* THIS puts image left and text right */
+  align-items: flex-start;
+  gap: 50px;           /* Space between image and fields */
   width: 100%;
-  max-width: 900px;
+  max-width: 1000px;   /* Prevents it from stretching too wide */
 }
 
-/* Image Preview Square */
+.image-upload-container {
+  flex-shrink: 0; /* Prevents the box from getting squished */
+}
+
 .image-preview-box {
-  width: 250px;
-  height: 250px;
+  width: 280px;         /* Keep this fixed */
+  height: 280px;        /* Keep this fixed */
   border: 1px solid #000;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #fff;
   cursor: pointer;
-  overflow: hidden;
-}
-
-.image-preview-box img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  overflow: hidden;    /* Important: clips any image part that is too big */
+  flex-shrink: 0;      /* Prevents the box from squishing */
 }
 
 .camera-icon {
-  font-size: 3rem;
+  font-size: 48px;
+  color: #aaa;
+}
+
+.displayed-image {
+  width: 100%;         /* Forces image to match box width */
+  height: 100%;        /* Forces image to match box height */
+  object-fit: cover;   /* Magic: fills the box without distortion */
+  display: block;
 }
 
 /* Inputs */
@@ -54,22 +64,25 @@
   margin-bottom: 5px;
 }
 
-.input-group input, .input-group textarea {
+.input-group input, 
+.input-group textarea {
   border: 1px solid #000;
-  border-radius: 10px;
-  padding: 10px;
+  border-radius: 25px; /* High radius for the rounded look */
+  padding: 10px 20px;
   font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .create-event-btn {
-  background-color: #4a90e2;
+  background-color: #3b82f6; /* Matching the blue in design */
   color: white;
   border: none;
   padding: 15px;
-  border-radius: 10px;
+  border-radius: 12px;
   font-weight: bold;
   font-size: 1.2rem;
   cursor: pointer;
   margin-top: 10px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  width: 100%;
 }
