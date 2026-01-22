@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useState } from "react"; 
 import { useNavigate } from "react-router-dom";
-import "../../css/ProfilePage.css"; // Ensure this path is 100% correct
+import "../../css/ProfilePage.css";
 import Logoo from "../../assets/Logoo.png";
 
 const UserProfile = () => {
   const navigate = useNavigate();
+
+  const [userData, setUserData] = useState({
+   
+  });
+
+  const handleLogout = () => {
+    localStorage.clear();
+    navigate("/login");
+  };
 
   return (
     <div className="dashboard-wrapper">
@@ -15,7 +24,7 @@ const UserProfile = () => {
         </div>
         <nav className="menu">
           <button className="menu-item" onClick={() => navigate("/user/dashboard")}>Dashboard</button>
-          <button className="menu-item">My events</button>
+          <button className="menu-item" onClick={() => navigate("/user/events")}>My events</button>
           <button className="menu-item active">Profile</button>
         </nav>
       </aside>
@@ -28,11 +37,8 @@ const UserProfile = () => {
           </header>
         </div>
 
-        {/* This div creates the thick gray frame */}
         <div className="profile-card-frame">
           <div className="profile-flex-container">
-            
-            {/* Left: Image and Edit Button */}
             <div className="profile-left-section">
               <div className="avatar-circle">
                 <img src="https://via.placeholder.com/150" alt="Profile" />
@@ -40,31 +46,35 @@ const UserProfile = () => {
               <button className="edit-profile-btn">Edit Profile</button>
             </div>
 
-            {/* Right: Form fields and Action buttons */}
             <div className="profile-right-section">
+              {/* ✅ Added missing fields and tied them to state value */}
               <div className="profile-input-group">
                 <label>Full Name</label>
-                <input type="text" placeholder="Enter Full Name" />
+                <input type="text" value={userData.fullName} readOnly />
               </div>
+
               <div className="profile-input-group">
                 <label>User Name</label>
-                <input type="text" placeholder="Enter Username" />
+                <input type="text" value={userData.userName} readOnly />
               </div>
+
               <div className="profile-input-group">
                 <label>Email</label>
-                <input type="email" placeholder="Enter Email" />
+                <input type="email" value={userData.email} readOnly />
               </div>
+
               <div className="profile-input-group">
                 <label>Joined</label>
-                <input type="text" placeholder="Joined Date" />
+                <input type="text" value={userData.joined} readOnly />
               </div>
 
               <div className="profile-actions-container">
-                <button className="profile-logout-btn">Log Out</button>
+                <button className="profile-logout-btn" onClick={handleLogout}>
+                  Log Out
+                </button>
                 <button className="delete-account-btn">Delete Account</button>
               </div>
             </div>
-
           </div>
         </div>
       </main>

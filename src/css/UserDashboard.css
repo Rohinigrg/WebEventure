@@ -15,13 +15,12 @@
 .main-content {
   flex: 1;
   padding: 40px;
-  background-color: gainsboro;
+  background-color: rgb(236, 232, 232);
   flex-direction: column;
   display: flex;
-  overflow-y: auto; /* Allows scrolling inside the dashboard only */
+  overflow-y: auto; 
 }
 
-/* SIDEBAR STYLING */
 .sidebar {
   width: 240px;
   background-color: #5b58f1;
@@ -237,3 +236,4 @@ padding: 40px;
   text-align: center;
   font-weight: bold;
 }
+
