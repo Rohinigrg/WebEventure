@@ -168,6 +168,7 @@
   font-weight: bold;
   cursor: pointer;
   transition: opacity 0.2s;
+  margin-left: auto;
 }
 
 .remove-btn:hover {

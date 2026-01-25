@@ -78,6 +78,11 @@ const handleDelete = async (id) => {
                 <h3>{event.title}</h3>
                 <p>📍 {event.location}</p>
                 <p>📅 {new Date(event.date).toLocaleDateString()}</p>
+                <p>🕒 {event.time}</p>
+                <p>🎫 Slots: {event.slots}</p>
+                <p className="event-desc">☰ {event.description}</p>
+
+              
               </div>
 
               <button
