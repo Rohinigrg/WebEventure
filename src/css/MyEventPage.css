@@ -6,19 +6,7 @@
   font-family: 'Inter', sans-serif; /* Clean, modern font */
 }
 
-/* The Outer White Frame (The background you see at the very edges) */
 
-
-/* --- SIDEBAR STYLE --- */
-.sidebar {
-  width: 260px;
-  background-color: #5b58f1; /* Target blue/purple color */
-  display: flex;
-  flex-direction: column;
-  padding: 30px 15px;
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
-}
 
 /* --- MAIN CONTENT AREA --- */
 .admin-main {

@@ -55,7 +55,14 @@ const UserDashboard = () => {
           events.map((event) => (
             <div className="event-card" key={event.id || event._id}>
               <div className="event-img-box">
-                <img src={event.image} alt={event.title} />
+          <img
+             src={
+               event.image?.startsWith("http")
+                ? event.image
+                : `http://localhost:5000/${event.image}`
+              }
+              alt={event.title}
+           />
               </div>
 
               <div className="event-details">

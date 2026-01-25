@@ -86,7 +86,12 @@
   background: #e0e0e0;
 }
 
-
+.event-img-box img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+}
 
 .welcome-header {
   background: white;

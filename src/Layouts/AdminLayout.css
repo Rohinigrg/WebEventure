@@ -7,18 +7,20 @@
 
 .admin-sidebar {
   width: 240px;
-  background-color: #333;
+  background-color: #474fea;
   display: flex;
   flex-direction: column;
-  padding: 30px 15px;
+  padding: 30px 20px;
   color: white;
 }
 
 .admin-logo-section {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   margin-bottom: 50px;
+  padding-left: 20x;
+  justify-content: flex-start;
 }
 
 .admin-logo-img {
@@ -32,32 +34,39 @@
   font-weight: bold;
   font-size: 1.2rem;
 }
-
 .admin-nav {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 18px;
 }
+
 
 .admin-nav-item {
   background: #c4c4c4;
   color: #333;
   border: none;
-  padding: 15px;
-  border-radius: 8px;
+
+  /* 👇 increase size */
+  padding: 20px 22px;
+  font-size: 1.1rem;
+  min-height: 60px;
+
+  border-radius: 10px;
   text-align: left;
-  font-weight: 600;
+  font-weight: 800;
   cursor: pointer;
+  width: 100%;
 }
+
 
 .admin-nav-item.active {
   background: #e0e0e0;
 }
 
 .admin-nav-item.logout-btn {
-  margin-top: auto;
-  background-color: #e51a1a;
-  color: white;
+  margin-top: 480px;
+  color: rgb(18, 4, 4);
+  margin-left: 30px;
 }
 
 .admin-main {

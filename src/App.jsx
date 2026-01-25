@@ -16,38 +16,40 @@ import MyEventPage from "./page/Private/MyEventPage";
 // Admin pages
 import AdminDashboard from "./page/Private/AdminDashboard";
 import ManageEvents from "./page/Private/ManageEvent";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
-    <Routes>
+    <>
+      <Toaster position="top-right" reverseOrder={false} />
 
-      {/* PUBLIC */}
-      <Route path="/" element={<LandingPage />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
+      <Routes>
+        {/* PUBLIC */}
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
 
-      {/* USER PROTECTED */}
-      <Route element={<PrivateRoutes allowedRoles={["user"]} />}>
-        <Route path="/user" element={<UserLayout />}>
-          <Route path="dashboard" element={<UserDashboard />} />
-          <Route path="profile" element={<ProfilePage />} />
-          <Route path="myEvents" element={<MyEventPage />} />
+        {/* USER PROTECTED */}
+        <Route element={<PrivateRoutes allowedRoles={["user"]} />}>
+          <Route path="/user" element={<UserLayout />}>
+            <Route path="dashboard" element={<UserDashboard />} />
+            <Route path="profile" element={<ProfilePage />} />
+            <Route path="myEvents" element={<MyEventPage />} />
+          </Route>
         </Route>
-      </Route>
 
-      {/* ADMIN PROTECTED */}
-      <Route element={<PrivateRoutes allowedRoles={["admin"]} />}>
-        <Route path="/admin" element={<AdminLayout />}>
-          <Route path="dashboard" element={<AdminDashboard />} />
-          <Route path="manage-events" element={<ManageEvents />} />
+        {/* ADMIN PROTECTED */}
+        <Route element={<PrivateRoutes allowedRoles={["admin"]} />}>
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route path="dashboard" element={<AdminDashboard />} />
+            <Route path="manage-events" element={<ManageEvents />} />
+          </Route>
         </Route>
-      </Route>
 
-      {/* FALLBACK */}
-      <Route path="*" element={<Navigate to="/login" replace />} />
-
-    </Routes>
+        {/* FALLBACK */}
+        <Route path="*" element={<Navigate to="/login" replace />} />
+      </Routes>
+    </>
   );
 }
-
 export default App;
