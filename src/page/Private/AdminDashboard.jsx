@@ -98,23 +98,33 @@ const handleLogout = () => {
             <h2 className="section-title">Events</h2>
             <div className="admin-events-list">
               {events.map((event) => (
-                <div className="admin-event-row" key={event.id || event._id}>
-                  <div className="event-img-placeholder">
-                     <img src={event.image} alt="" />
-                  </div>
-                  <div className="admin-event-info">
-                    <h3>{event.title}</h3>
-                    <p>📍 {event.location}</p>
-                    <p>📅 {new Date(event.date).toLocaleDateString()}</p>
-                    <p>🕒 {event.time || "12:00 PM - 4:00 PM"}</p>
-                  </div>
-                  <button 
-                    className="remove-btn" 
-                    onClick={() => handleRemove(event.id)}
-                  >
-                    Remove
-                  </button>
-                </div>
+                // ... inside your events.map ...
+<div className="admin-event-row" key={event.id || event._id}>
+  <div className="event-img-placeholder">
+    {/* Ensure the src is correct. 
+      If event.image is just a filename, use: `http://localhost:5000/${event.image}`
+    */}
+    <img 
+      src={event.image.startsWith('http') ? event.image : `http://localhost:5000/${event.image}`} 
+      alt={event.title} 
+      onError={(e) => { e.target.src = 'https://via.placeholder.com/140x90?text=No+Image'; }}
+    />
+  </div>
+  
+  <div className="admin-event-info">
+    <h3>{event.title}</h3>
+    <p>📍 {event.location}</p>
+    <p>📅 {new Date(event.date).toLocaleDateString()}</p>
+    <p>🕒 {event.time || "12:00 PM - 4:00 PM"}</p>
+  </div>
+  
+  <button 
+    className="remove-btn" 
+    onClick={() => handleRemove(event.id || event._id)}
+  >
+    Remove
+  </button>
+</div>
               ))}
             </div>
           </div>

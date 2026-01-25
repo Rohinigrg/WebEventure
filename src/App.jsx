@@ -4,9 +4,14 @@ import Login from "./page/Public/Login";
 import Register from "./page/Public/Register";
 import PrivateRoutes from "./Routes/PrivateRoutes";
 
+// Layouts
+import UserLayout from "./layouts/UserLayout";
+import AdminLayout from "./layouts/AdminLayout";
+
 // User pages
 import UserDashboard from "./page/Private/UserDashboard";
 import ProfilePage from "./page/Private/ProfilePage";
+import MyEventPage from "./page/Private/MyEventPage";
 
 // Admin pages
 import AdminDashboard from "./page/Private/AdminDashboard";
@@ -15,6 +20,7 @@ import ManageEvents from "./page/Private/ManageEvent";
 function App() {
   return (
     <Routes>
+
       {/* PUBLIC */}
       <Route path="/" element={<LandingPage />} />
       <Route path="/login" element={<Login />} />
@@ -22,18 +28,24 @@ function App() {
 
       {/* USER PROTECTED */}
       <Route element={<PrivateRoutes allowedRoles={["user"]} />}>
-        <Route path="/user/dashboard" element={<UserDashboard />} />
-        <Route path="/user/profile" element={<ProfilePage />} />
+        <Route path="/user" element={<UserLayout />}>
+          <Route path="dashboard" element={<UserDashboard />} />
+          <Route path="profile" element={<ProfilePage />} />
+          <Route path="myEvents" element={<MyEventPage />} />
+        </Route>
       </Route>
 
       {/* ADMIN PROTECTED */}
       <Route element={<PrivateRoutes allowedRoles={["admin"]} />}>
-        <Route path="/admin/dashboard" element={<AdminDashboard />} />
-        <Route path="/admin/manage-events" element={<ManageEvents />} />
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route path="dashboard" element={<AdminDashboard />} />
+          <Route path="manage-events" element={<ManageEvents />} />
+        </Route>
       </Route>
 
       {/* FALLBACK */}
       <Route path="*" element={<Navigate to="/login" replace />} />
+
     </Routes>
   );
 }

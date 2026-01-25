@@ -1,83 +1,88 @@
-import React, { useState } from "react"; 
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../css/ProfilePage.css";
-import Logoo from "../../assets/Logoo.png";
 
 const UserProfile = () => {
   const navigate = useNavigate();
-
+  const [isEditing, setIsEditing] = useState(false);
   const [userData, setUserData] = useState({
-   
+    fullName: "",
+    userName: "",
+    email: "",
+    joined: "",
+    avatar: "https://via.placeholder.com/150",
   });
 
-  const handleLogout = () => {
-    localStorage.clear();
-    navigate("/login");
-  };
+  // Load user data logic remains the same...
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    if (storedUser) {
+      setUserData({
+        fullName: storedUser.fullName || "",
+        userName: storedUser.userName || "",
+        email: storedUser.email || "",
+        joined: storedUser.createdAt ? new Date(storedUser.createdAt).toDateString() : "—",
+        avatar: storedUser.avatar || "https://via.placeholder.com/150",
+      });
+    }
+  }, []);
 
   return (
-    <div className="dashboard-wrapper">
-      <aside className="sidebar">
-        <div className="logo-container">
-          <img src={Logoo} alt="Logo" className="logo-img" />
-          <span className="logo-text">Eventure</span>
-        </div>
-        <nav className="menu">
-          <button className="menu-item" onClick={() => navigate("/user/dashboard")}>Dashboard</button>
-          <button className="menu-item" onClick={() => navigate("/user/events")}>My events</button>
-          <button className="menu-item active">Profile</button>
-        </nav>
-      </aside>
+    <div className="profile-page-container">
+      {/* 1. Header Bar */}
+      <header className="profile-header-bar">
+        <span className="header-icon">👤</span>
+        <h2 style={{ margin: 0 }}>Profile</h2>
+      </header>
 
-      <main className="main-content">
-        <div className="profile-header-container">
-          <header className="profile-header-bar">
-            <span className="header-icon">👤</span>
-            <h2>Profile</h2>
-          </header>
-        </div>
+      {/* 2. Main Profile Card */}
+      <div className="profile-card-frame">
+        <div className="profile-flex-container">
+          
+          {/* Left: Avatar & Edit Button */}
+          <div className="profile-left-section">
+            <div className="avatar-circle">
+              <img src={userData.avatar} alt="Profile" />
+            </div>
+            <button className="edit-profile-btn" onClick={() => setIsEditing(!isEditing)}>
+              {isEditing ? "Cancel" : "Edit Profile"}
+            </button>
+          </div>
 
-        <div className="profile-card-frame">
-          <div className="profile-flex-container">
-            <div className="profile-left-section">
-              <div className="avatar-circle">
-                <img src="https://via.placeholder.com/150" alt="Profile" />
-              </div>
-              <button className="edit-profile-btn">Edit Profile</button>
+          {/* Right: Input Fields */}
+          <div className="profile-right-section">
+            <div className="profile-input-group">
+              <label>Full Name</label>
+              <input type="text" name="fullName" value={userData.fullName} readOnly={!isEditing} onChange={(e) => setUserData({...userData, fullName: e.target.value})} />
             </div>
 
-            <div className="profile-right-section">
-              {/* ✅ Added missing fields and tied them to state value */}
-              <div className="profile-input-group">
-                <label>Full Name</label>
-                <input type="text" value={userData.fullName} readOnly />
-              </div>
+            <div className="profile-input-group">
+              <label>User Name</label>
+              <input type="text" name="userName" value={userData.userName} readOnly={!isEditing} onChange={(e) => setUserData({...userData, userName: e.target.value})} />
+            </div>
 
-              <div className="profile-input-group">
-                <label>User Name</label>
-                <input type="text" value={userData.userName} readOnly />
-              </div>
+            <div className="profile-input-group">
+              <label>Email</label>
+              <input type="email" value={userData.email} readOnly />
+            </div>
 
-              <div className="profile-input-group">
-                <label>Email</label>
-                <input type="email" value={userData.email} readOnly />
-              </div>
+            <div className="profile-input-group">
+              <label>Joined</label>
+              <input type="text" value={userData.joined} readOnly />
+            </div>
 
-              <div className="profile-input-group">
-                <label>Joined</label>
-                <input type="text" value={userData.joined} readOnly />
-              </div>
-
-              <div className="profile-actions-container">
-                <button className="profile-logout-btn" onClick={handleLogout}>
-                  Log Out
+            <div className="profile-actions-container">
+              {isEditing && (
+                <button className="save-profile-btn" style={{ backgroundColor: '#10b981', color: 'white', padding: '10px', borderRadius: '8px', border: 'none', cursor: 'pointer' }}>
+                  Save Changes
                 </button>
-                <button className="delete-account-btn">Delete Account</button>
-              </div>
+              )}
+              <button className="profile-logout-btn" onClick={() => { localStorage.clear(); navigate("/login"); }}>Log Out</button>
+              <button className="delete-account-btn">Delete Account</button>
             </div>
           </div>
         </div>
-      </main>
+      </div>
     </div>
   );
 };

@@ -9,25 +9,39 @@
   display: flex;
   height: 100vh;
   width: 100%;
-  background-color: #4a3e3e;
+  background-color: white; /* Matches the outer border in image 2 */
+  padding: 10px;           /* This creates that white "frame" look */
+  box-sizing: border-box;
   overflow: hidden;
 }
-.main-content {
-  flex: 1;
-  padding: 40px;
-  background-color: rgb(236, 232, 232);
-  flex-direction: column;
-  display: flex;
-  overflow-y: auto; 
-}
+
 
 .sidebar {
-  width: 240px;
-  background-color: #5b58f1;
+  width: 260px;
+  background-color: #5b58f1; /* The vibrant blue/purple */
   display: flex;
   flex-direction: column;
   padding: 30px 15px;
+  border-top-left-radius: 15px;    /* Rounds the top left of the inner block */
+  border-bottom-left-radius: 15px; /* Rounds the bottom left */
 }
+.main-content {
+  flex: 1;
+  padding: 20px;
+  background-color: hsl(0, 0%, 100%);       /* The light gray inner background */
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto; 
+  border-top-right-radius: 15px;   /* Rounds the top right */
+  border-bottom-right-radius: 15px;/* Rounds the bottom right */
+}
+
+.admin-main {
+  background-color: rgb(236, 235, 235);
+  padding: 20px;
+  min-height: 100vh;
+}
+
 
 .logo-container {
   display: flex;
@@ -72,14 +86,7 @@
   background: #e0e0e0;
 }
 
-/* MAIN CONTENT */
-.main-content {
-  flex: 1;
-padding: 40px;
-  background-color: gainsboro;
-  flex-direction: column;
-  display: flex;
-}
+
 
 .welcome-header {
   background: white;
@@ -87,7 +94,8 @@ padding: 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-radius: 2px;
+  border-radius: 8px; /* Slightly more rounded like image 2 */
+  margin-bottom: 20px;
 }
 
 .user-profile-left {
@@ -122,13 +130,15 @@ padding: 40px;
 
 .search-input-wrapper {
   background: white;
-  width: 80%;
+  width: 100%; /* Changed from 80% to fit the flow better */
+  max-width: 800px;
+  margin: 0 auto 25px auto;
   display: flex;
   align-items: center;
-  padding: 10px 20px;
+  padding: 12px 25px;
   border-radius: 30px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
-
 .search-icon {
   font-size: 1.2rem;
   margin-right: 10px;
@@ -150,7 +160,7 @@ padding: 40px;
 }
 
 .event-card {
-  background: white;
+  background: rgb(255, 254, 254);
   padding: 20px;
   border-radius: 4px;
   display: flex;

@@ -93,9 +93,11 @@
 
 .admin-content-card {
   background: white;
-  border: 10px solid #d3d3d3; /* Thick border from Figma */
+  border: 10px solid #d3d3d3;
   padding: 30px;
-  min-height: calc(100vh - 150px);
+  display: flex;
+  flex-direction: column; /* This ensures items stack: Welcome -> Stats -> Events */
+  gap: 20px;
 }
 
 .welcome-text {
@@ -104,31 +106,43 @@
   margin-bottom: 30px;
 }
 
-/* STATS CARDS */
 .stats-row {
   display: flex;
-  gap: 40px;
-  margin-bottom: 40px;
+  flex-direction: row;
+  gap: 30px;
+  width: 100%; /* Takes full width to push next item down */
+  margin-bottom: 20px;
 }
 
+/* Individual Stat Box: Fixed width so they don't stretch */
 .stat-box {
   border: 1.5px solid #000;
-  padding: 20px 40px;
+  padding: 20px;
   display: flex;
   align-items: center;
   gap: 20px;
-  min-width: 250px;
+  width: 280px; /* Fixed size from your design */
+  background: white;
 }
 
-.stat-icon {
-  font-size: 2.5rem;
+.stat-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.stat-details p {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 500;
 }
 
 .stat-details h3 {
-  font-size: 1.8rem;
-  text-align: center;
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 800;
+  text-align: left;
 }
-
 /* EVENT LIST */
 .section-title {
   font-size: 1.8rem;
@@ -144,25 +158,34 @@
   display: flex;
   align-items: center;
   gap: 25px;
-  padding: 20px;
-  border: 1px solid #000;
+  padding: 15px;
+  border: 1.5px solid #000;
   margin-bottom: 15px;
+  background: white;
 }
 
+/* FIXED IMAGE SIZE - This is the fix you needed */
 .event-img-placeholder {
-  width: 140px;
-  height: 90px;
+  width: 140px;  /* Locked width */
+  height: 90px;  /* Locked height */
   border: 1px solid #000;
+  flex-shrink: 0; /* Prevents image from squishing */
+  overflow: hidden;
+  background-color: #f0f0f0;
 }
 
 .event-img-placeholder img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover; /* Ensures image fills the 140x90 box without distortion */
+  display: block;
 }
 
 .admin-event-info {
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .remove-btn {
@@ -173,5 +196,10 @@
   border-radius: 8px;
   font-weight: bold;
   cursor: pointer;
-  font-size: 1.1rem;
+  transition: opacity 0.2s;
 }
+
+.remove-btn:hover {
+  opacity: 0.8;
+}
+

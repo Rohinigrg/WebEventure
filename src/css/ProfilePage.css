@@ -1,45 +1,33 @@
-/* Layout containers */
-.dashboard-wrapper {
-  display: flex;
-  height: 100vh;
-  background-color: #fff;
-}
-
-.main-content {
-  flex: 1;
-  padding: 40px;
-  background-color: lightgray;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Header Bar styling */
-.profile-header-container {
-  background: white;
-  margin-bottom: 20px;
+/* Container for the inner content only */
+.profile-page-container {
+  padding: 20px;
   width: 100%;
+  background-color: rgb(236, 235, 235);
 }
 
+/* Header Bar inside the main content */
 .profile-header-bar {
   display: flex;
   align-items: center;
   gap: 15px;
-  padding: 10px 20px;
-  border: 1px solid #ddd;
+  padding: 20px 25px;
+  background-color: white;
+  margin-bottom: 20px;
+  border-radius: 4px;
 }
 
-/* THE GRAY FRAME */
+/* THE WHITE CARD (Matches your image) */
 .profile-card-frame {
   background: white;
-  border: 15px solid white; /* Thick gray border from your design */
   padding: 60px;
-  flex: 1;
+  border-radius: 8px; /* Slightly rounded corners */
+  min-height: 70vh;
 }
 
 .profile-flex-container {
   display: flex;
-  gap: 100px;
-  justify-content: center;
+  gap: 80px;
+  justify-content: flex-start; /* Aligns content to left/center */
 }
 
 /* Avatar Section */
@@ -55,7 +43,7 @@
   height: 180px;
   border-radius: 50%;
   overflow: hidden;
-  border: 1px solid #ccc;
+  border: 1px solid #eee;
 }
 
 .avatar-circle img {
@@ -77,7 +65,7 @@
 /* Form Section */
 .profile-right-section {
   flex: 1;
-  max-width: 500px;
+  max-width: 600px;
 }
 
 .profile-input-group {
@@ -86,16 +74,17 @@
 
 .profile-input-group label {
   display: block;
-  font-weight: bold;
+  font-weight: 500;
   margin-bottom: 8px;
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 .profile-input-group input {
   width: 100%;
   padding: 12px;
-  border: 1px solid #000;
-  border-radius: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
 }
 
 /* Action Buttons */
@@ -112,17 +101,17 @@
   color: white;
   border: none;
   padding: 12px 45px;
-  border-radius: 10px;
+  border-radius: 8px;
   font-weight: bold;
   cursor: pointer;
 }
 
 .delete-account-btn {
-  background-color: #ff0000; /* Red */
+  background-color: #ff0000;
   color: white;
   border: none;
   padding: 12px 25px;
-  border-radius: 10px;
+  border-radius: 8px;
   font-weight: bold;
   cursor: pointer;
 }
