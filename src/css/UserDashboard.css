@@ -38,10 +38,9 @@
 
 .admin-main {
   background-color: rgb(236, 235, 235);
-  padding: 20px;
+  padding: 10px 20px;
   min-height: 100vh;
 }
-
 
 .logo-container {
   display: flex;
@@ -100,7 +99,7 @@
   justify-content: space-between;
   align-items: center;
   border-radius: 8px; /* Slightly more rounded like image 2 */
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
 
 .user-profile-left {
@@ -130,15 +129,15 @@
 .search-section {
   display: flex;
   justify-content: center;
-  margin: 25px 0;
+  margin: 5px 0;
 }
 
 .search-input-wrapper {
   background: white;
   width: 100%; /* Changed from 80% to fit the flow better */
   max-width: 800px;
-  margin: 0 auto 25px auto;
   display: flex;
+  margin-bottom: 10px;
   align-items: center;
   padding: 12px 25px;
   border-radius: 30px;
@@ -160,8 +159,8 @@
 .events-container {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  padding-bottom: 40px;
+
+  padding-top: 5px;
 }
 
 .event-card {

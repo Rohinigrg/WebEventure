@@ -1,0 +1,120 @@
+.event-details-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* The small floating header label */
+.details-header-tag {
+  background: white;
+  padding: 8px 25px;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: fit-content;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.details-header-tag h1 {
+  font-size: 1.1rem;
+  margin: 0;
+  color: #333;
+}
+
+/* The main white card content */
+.details-card {
+  background: white;
+  padding: 40px;
+  border-radius: 8px;
+  max-width: 900px;
+}
+
+.details-upper {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+/* The specific blue border from your image */
+.details-img-frame {
+  border: 3px solid #3498db;
+  padding: 3px;
+  line-height: 0;
+  flex-shrink: 0;
+}
+
+.details-img-frame img {
+  width: 350px;
+  height: 230px;
+  object-fit: cover;
+}
+
+.details-main-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.details-title {
+  font-size: 1.8rem;
+  margin: 0 0 10px 0;
+  font-weight: 700;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  color: #444;
+}
+
+/* Description Section */
+.details-description-section h3 {
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+  color: #333;
+}
+
+.details-description-section p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #555;
+  text-align: justify;
+}
+
+/* Footer & Status */
+.details-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.slots-counter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.green-indicator {
+  width: 24px;
+  height: 16px;
+  background-color: #00ff00;
+}
+
+.status-button.joined {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  padding: 12px 0;
+  border-radius: 8px;
+  font-weight: 600;
+  width: 160px;
+  cursor: default;
+  text-align: center;
+}
