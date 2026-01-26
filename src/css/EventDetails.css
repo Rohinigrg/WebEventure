@@ -1,56 +1,54 @@
-.event-details-container {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-/* The small floating header label */
-.details-header-tag {
+/* Layout consistency with your other pages */
+.details-header-label {
   background: white;
-  padding: 8px 25px;
-  border-radius: 25px;
+  padding: 15px 300px;
+  border-radius: 10px;
   display: flex;
-  align-items: center;
-  gap: 12px;
+  gap: 10px;
   width: fit-content;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  margin-bottom: 25px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-.details-header-tag h1 {
-  font-size: 1.1rem;
+.details-header-label h1 {
+  font-size: 1.50rem;
   margin: 0;
-  color: #333;
+  
 }
 
-/* The main white card content */
-.details-card {
+/* Main Card */
+.event-details-card {
   background: white;
-  padding: 40px;
+  padding: 35px;
   border-radius: 8px;
+  width: 100%;
+  box-sizing: border-box;
   max-width: 900px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
-.details-upper {
+.event-details-top {
   display: flex;
   gap: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
+  width: 100%;
 }
 
-/* The specific blue border from your image */
-.details-img-frame {
-  border: 3px solid #3498db;
+/* Image with blue border like screenshot */
+.details-img-container {
+  border: 3.5px solid #3498db;
   padding: 3px;
   line-height: 0;
-  flex-shrink: 0;
+  border-radius: 2px;
 }
 
-.details-img-frame img {
-  width: 350px;
-  height: 230px;
+.details-img-container img {
+  width: 320px;
+  height: 220px;
   object-fit: cover;
 }
 
-.details-main-info {
+.details-info-column {
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -58,63 +56,52 @@
 
 .details-title {
   font-size: 1.8rem;
-  margin: 0 0 10px 0;
-  font-weight: 700;
+  font-weight: bold;
+  margin-bottom: 8px;
 }
 
-.info-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 1rem;
+.details-meta {
+  font-size: 1.05rem;
   color: #444;
+  margin: 0;
 }
 
-/* Description Section */
-.details-description-section h3 {
+/* Description */
+.details-description-box h3 {
   font-size: 1.1rem;
-  margin-bottom: 12px;
-  color: #333;
+  margin-bottom: 10px;
 }
 
-.details-description-section p {
-  font-size: 0.95rem;
+.details-description-box p {
   line-height: 1.6;
-  color: #555;
+  color: #333;
   text-align: justify;
 }
 
-/* Footer & Status */
-.details-footer {
+/* Footer Actions */
+.details-action-footer {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   gap: 10px;
-  margin-top: 20px;
+  margin-top: 15px;
 }
 
-.slots-counter {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.9rem;
-  font-weight: 500;
-}
-
-.green-indicator {
-  width: 24px;
-  height: 16px;
+.square-green {
+  width: 22px;
+  height: 15px;
   background-color: #00ff00;
+  display: inline-block;
+  margin-right: 8px;
 }
 
-.status-button.joined {
+.joined-btn {
   background-color: #3b82f6;
   color: white;
   border: none;
-  padding: 12px 0;
+  padding: 10px 45px;
   border-radius: 8px;
-  font-weight: 600;
-  width: 160px;
+  font-weight: bold;
+  font-size: 1rem;
   cursor: default;
-  text-align: center;
 }

@@ -15,6 +15,8 @@ const Login = () => {
 
   const handleLogin = (e) => {
    e.preventDefault();
+   setError("");
+
    if (!email || !password) {
      setError("Please fill all fields");
      return;

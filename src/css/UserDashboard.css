@@ -168,8 +168,10 @@
   padding: 20px;
   border-radius: 4px;
   display: flex;
-  gap: 25px;
+  gap: 20px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  align-items: center;
+  justify-content: space-between; /* Ensures slots stay at far right */
 }
 
 .event-img-box img {
@@ -180,7 +182,7 @@
 }
 
 .event-details {
-  flex: 2;
+  flex: 1;
 }
 
 .event-details h3 {
@@ -205,11 +207,10 @@
 
 /* ACTION BUTTONS */
 .event-actions {
-  flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: flex-end;
+  justify-content: flex-end;
+  align-items: center;
   gap: 15px;
 }
 

@@ -25,55 +25,53 @@ const EventDetails = () => {
     fetchEventDetails();
   }, [id, token]);
 
-  if (loading) return <div className="loading">Loading details...</div>;
-  if (!event) return <div className="error">Event not found.</div>;
+  if (loading) return <main className="admin-main"><p className="empty-text">Loading details...</p></main>;
+  if (!event) return <main className="admin-main"><p className="empty-text">Event not found.</p></main>;
+
+  // Image path logic consistent with your Dashboard
+  const imageUrl = event.image?.startsWith("http")
+    ? event.image
+    : `http://localhost:5000/${event.image}`;
 
   return (
-    <div className="event-details-container">
-      {/* Small Header Tag */}
-      <header className="details-header-tag">
-        <span className="calendar-icon">📅</span>
+    <main className="admin-main">
+      {/* HEADER LABEL */}
+      <header className="details-header-label">
+        <span className="home-icon">📅</span>
         <h1>Event Details</h1>
       </header>
 
-      {/* Main White Card */}
-      <div className="details-card">
-        <div className="details-upper">
-          <div className="details-img-frame">
-            <img 
-              src={event.image || "https://via.placeholder.com/300x200"} 
-              alt={event.title} 
-            />
+      {/* MAIN EVENT CARD */}
+      <div className="event-details-card">
+        <div className="event-details-top">
+          <div className="details-img-container">
+            <img src={imageUrl} alt={event.title} />
           </div>
-          
-          <div className="details-main-info">
+
+          <div className="details-info-column">
             <h2 className="details-title">{event.title}</h2>
-            <div className="info-item">
-              <span className="icon">📍</span> {event.location}
-            </div>
-            <div className="info-item">
-              <span className="icon">📅</span> {event.date}
-            </div>
-            <div className="info-item">
-              <span className="icon">🕒</span> {event.time}
-            </div>
+            <p className="details-meta">📍 {event.location}</p>
+            <p className="details-meta">
+              🗓️ {new Date(event.date).toLocaleDateString()}
+            </p>
+            <p className="details-meta">🕒 {event.time || "Not specified"}</p>
           </div>
         </div>
 
-        <div className="details-description-section">
+        <div className="details-description-box">
           <h3>Event Description</h3>
           <p>{event.description}</p>
         </div>
 
-        <div className="details-footer">
-          <div className="slots-counter">
-            <span className="green-indicator"></span>
-            <span>{event.slotsLeft || 20} Slots Left</span>
+        <div className="details-action-footer">
+          <div className="slots-tag">
+            <span className="square-green"></span>
+            {event.slots || 0} Slots Left
           </div>
-          <button className="status-button joined">Joined</button>
+          <button className="joined-btn">Joined</button>
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 

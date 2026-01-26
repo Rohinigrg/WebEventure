@@ -53,9 +53,11 @@ const UserDashboard = () => {
           <div className="no-events-card">No events available</div>
         ) : (
           events.map((event) => (
-            <div className="event-card" key={event.id || event._id}>
+            <div className="event-card" key={event.id || event._id}
+               onClick={() => navigate(`/user/event-details/${event.id || event._id}`)}
+               style={{ cursor: "pointer" }} >
               <div className="event-img-box">
-          <img
+            <img
              src={
                event.image?.startsWith("http")
                 ? event.image
@@ -82,9 +84,6 @@ const UserDashboard = () => {
               </div>
 
               <div className="event-actions">
-                <button className="join-btn">
-                  <span className="dot-blue"></span> Join Event
-                </button>
                 <div className="slots-tag">
                   <span className="square-green"></span>{" "}
                   {event.slots || 0} Slots Left
