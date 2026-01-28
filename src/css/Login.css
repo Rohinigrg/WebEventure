@@ -57,8 +57,7 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 15px;
-      text-align: left;
-
+  text-align: left;
 
 }
 
@@ -76,6 +75,17 @@
   margin-bottom: 15px;
   cursor: pointer;
   text-align: right;
+}
+
+/* Removes underline from Forgot Password link */
+.forgot a {
+  text-decoration: none;
+  color: inherit; /* Keeps the text color the same as the parent <p> tag */
+}
+
+.forgot a:hover {
+  text-decoration: none; /* Optional: ensures no underline even on hover */
+  opacity: 0.8;         /* Subtle visual feedback instead of an underline */
 }
 
 .login-btn {

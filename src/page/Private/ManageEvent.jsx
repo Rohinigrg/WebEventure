@@ -53,7 +53,8 @@ const ManageEvents = () => {
         title: "",
         location: "",
         date: "",
-        time: "",
+        startTime: "",
+        endTime: "",
         description: "",
         slots: "",
         image: null,
@@ -73,7 +74,7 @@ const ManageEvents = () => {
         <h1>Manage Events</h1>
       </header>
 
-      <div className="admin-content-card">
+      <div className="manage-events-scroll">
         <form className="manage-event-form" onSubmit={handleSubmit}>
           <div className="image-upload-container">
             <label htmlFor="image-input" className="image-preview-box">
@@ -110,17 +111,27 @@ const ManageEvents = () => {
             </div>
 
             <div className="input-group">
-              <label>Time</label>
+              <label>Start Time</label>
               <input
-               
-           type="time"
-           name="time"
-           value={eventData.time}
-           onChange={handleChange}
-           required
-         />
+                type="time"
+                name="startTime"
+                value={eventData.startTime}
+                onChange={handleChange}
+                required
+             />
+              </div>
 
+              <div className="input-group">
+               <label>End Time</label>
+               <input
+                type="time"
+                name="endTime"
+                value={eventData.endTime}
+                onChange={handleChange}
+                required
+              />
             </div>
+
 
             <div className="input-group">
               <label>Description</label>

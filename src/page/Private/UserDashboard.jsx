@@ -17,6 +17,14 @@ const UserDashboard = () => {
       .catch((err) => console.error(err));
   }, []);
 
+  const formatTime = (time) => {
+  const [h, m] = time.split(":");
+  const hour = parseInt(h);
+  const ampm = hour >= 12 ? "PM" : "AM";
+  const formattedHour = hour % 12 || 12;
+  return `${formattedHour}:${m} ${ampm}`;
+};
+
   return (
   
     <>

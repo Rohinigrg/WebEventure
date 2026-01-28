@@ -18,6 +18,7 @@ import AdminDashboard from "./page/Private/AdminDashboard";
 import ManageEvents from "./page/Private/ManageEvent";
 import { Toaster } from "react-hot-toast";
 import EventDetails from "./page/Private/EventDetails";
+import ForgetPassword from "./page/Private/ForgetPassword";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
             <Route path="event-details/:id" element={<EventDetails/>}/>
             <Route path="profile" element={<ProfilePage />} />
             <Route path="myEvents" element={<MyEventPage />} />
+            <Route path="forgetpassword" element={<ForgetPassword/>}/>
           </Route>
         </Route>
 

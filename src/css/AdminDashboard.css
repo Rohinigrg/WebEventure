@@ -11,8 +11,8 @@
 }
 
 .admin-event-row img {
-  width: 100px;
-  height: 80px;
+  width: 130px;
+  height: 110px;
   object-fit: cover;
   border-radius: 8px;
 }
@@ -67,9 +67,22 @@
   border: 10px solid #d3d3d3;
   padding: 30px;
   display: flex;
-  flex-direction: column; /* This ensures items stack: Welcome -> Stats -> Events */
+  flex-direction: column;
   gap: 20px;
+
+  flex: 1;             /* 🔥 fill available height */
+  overflow-y: auto;     /* 🔥 only this scrolls */
 }
+
+.admin-content-card::-webkit-scrollbar {
+  display: none;
+}
+
+.admin-content-card {
+  scrollbar-width: none;
+}
+
+
 
 .welcome-text {
   font-size: 2rem;
@@ -133,6 +146,7 @@
   border: 1.5px solid #000;
   margin-bottom: 15px;
   background: white;
+  flex-shrink: 0;
 }
 
 /* FIXED IMAGE SIZE - This is the fix you needed */

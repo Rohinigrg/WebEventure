@@ -1,11 +1,18 @@
 
-.admin-content-card {
+.manage-events-scroll {
   background: white;
-  border: 15px solid #dcdcdc; /* Gray thick frame from your design */
+  border: 15px solid #dcdcdc;
   padding: 40px;
-  display: flex;
-  justify-content: center;
+
+  /* 🔥 THIS MAKES IT SCROLL */
+  height: calc(100vh - 120px);
+  overflow-y: auto;
+
+  /* layout safety */
+  box-sizing: border-box;
 }
+
+
 
 /* Side-by-side layout */
 .manage-event-form {
