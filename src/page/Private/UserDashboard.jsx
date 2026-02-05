@@ -17,9 +17,10 @@ const UserDashboard = () => {
       .catch((err) => console.error(err));
   }, []);
 
-  const formatTime = (time) => {
+const formatTime = (time) => {
+  if (!time) return "Not specified";
   const [h, m] = time.split(":");
-  const hour = parseInt(h);
+  const hour = parseInt(h, 10);
   const ampm = hour >= 12 ? "PM" : "AM";
   const formattedHour = hour % 12 || 12;
   return `${formattedHour}:${m} ${ampm}`;
@@ -82,8 +83,9 @@ const UserDashboard = () => {
                   📅 {new Date(event.date).toLocaleDateString()}
                 </p>
                 <p className="info-row">
-                  🕒 {event.time || "Not specified"}
+                  🕒 {formatTime(event.startTime)} - {formatTime(event.endTime)}
                 </p>
+
 
                 <div className="description-row">
                   <span className="desc-icon">☰</span>

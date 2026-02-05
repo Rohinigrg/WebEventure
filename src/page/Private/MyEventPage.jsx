@@ -1,121 +1,102 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 import "../../css/MyEventPage.css";
-import logoo from "../../assets/logoo.png";
-import { useLocation, useNavigate } from "react-router-dom";
 
 const MyEvents = () => {
   const navigate = useNavigate();
-  const location = useLocation();
 
   const [myEvents, setMyEvents] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const token = localStorage.getItem("token");
-
+  // Load joined events from localStorage
   useEffect(() => {
-    const fetchMyEvents = async () => {
-      try {
-        const res = await axios.get(
-          "http://localhost:5000/api/my-events",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+    const storedEvents =
+      JSON.parse(localStorage.getItem("myEvents")) || [];
 
-        setMyEvents(
-          Array.isArray(res.data) ? res.data : res.data.data || []
-        );
-      } catch (error) {
-        console.error("Error fetching my events:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+    setMyEvents(storedEvents);
+    setLoading(false);
+  }, []);
 
-    fetchMyEvents();
-  }, [token]);
+  // Cancel (remove) event
+  const handleCancel = (eventId) => {
+    const confirmCancel = window.confirm(
+      "Are you sure you want to cancel this event?"
+    );
+    if (!confirmCancel) return;
 
-  const handleCancel = async (eventId) => {
-    if (!window.confirm("Are you sure you want to cancel this event?")) return;
+    const updatedEvents = myEvents.filter(
+      (event) => event._id !== eventId
+    );
 
-    try {
-      await axios.delete(
-        `http://localhost:5000/api/my-events/${eventId}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+    localStorage.setItem("myEvents", JSON.stringify(updatedEvents));
+    setMyEvents(updatedEvents);
 
-      // Remove cancelled event from UI
-      setMyEvents((prev) =>
-        prev.filter((event) => event._id !== eventId)
-      );
-    } catch (error) {
-      console.error("Cancel failed:", error);
-      alert("Failed to cancel event");
-    }
-  };
-
-  const handleLogout = () => {
-    localStorage.clear();
-    navigate("/login");
+    toast.success("Event cancelled successfully");
   };
 
   return (
-    <>
+    <main className="admin-main">
+      {/* HEADER */}
+      <header className="admin-header">
+        <span className="home-icon">📅</span>
+        <h1>My Events</h1>
+      </header>
 
-      {/* MAIN CONTENT */}
-      <main className="admin-main">
-        <header className="admin-header">
-          <span className="home-icon">📅</span>
-          <h1>My Events</h1>
-        </header>
-          {loading ? (
-            <p className="empty-text">Loading your events...</p>
-          ) : myEvents.length === 0 ? (
-            <p className="empty-text">You haven’t joined any events yet.</p>
-          ) : (
-            <div className="my-events-list">
-              {myEvents.map((event) => (
-                <div className="joined-event-card" key={event._id}>
-                  <div className="event-card-img">
-                    <img
-                      src={event.image || "https://via.placeholder.com/300x200"}
-                      alt={event.title}
-                    />
-                  </div>
+      {/* CONTENT */}
+      {loading ? (
+        <p className="empty-text">Loading your events...</p>
+      ) : myEvents.length === 0 ? (
+        <p className="empty-text">You haven’t joined any events yet.</p>
+      ) : (
+        <div className="my-events-list">
+          {myEvents.map((event) => (
+            <div className="joined-event-card" key={event._id}>
+              {/* IMAGE */}
+              <div className="event-card-img">
+                <img
+                  src={
+                    event.image?.startsWith("http")
+                      ? event.image
+                      : `http://localhost:5000/${event.image}`
+                  }
+                  alt={event.title}
+                />
+              </div>
 
-                  <div className="event-card-details">
-                    <h2 className="event-title">{event.title}</h2>
-                    <p className="event-meta">📍 {event.location}</p>
-                    <p className="event-meta">🗓️ {event.date}</p>
-                    <p className="event-meta">🕒 {event.time}</p>
-                    <p className="event-description">
-                      {event.description}
-                    </p>
-                  </div>
+              {/* DETAILS */}
+              <div className="event-card-details">
+                <h2 className="event-title">{event.title}</h2>
 
-                  <div className="event-card-actions">
-                    <button
-                      className="cancel-btn"
-                      onClick={() => handleCancel(event._id)}
-                    >
-                      Cancel
-                    </button>
-                    <div className="joined-status">Joined</div>
-                  </div>
-                </div>
-              ))}
+                <p className="event-meta">📍 {event.location}</p>
+
+                <p className="event-meta">
+                  🗓️ {new Date(event.date).toLocaleDateString()}
+                </p>
+
+                <p className="event-meta">🕒 {event.time || "N/A"}</p>
+
+                <p className="event-description">
+                  {event.description}
+                </p>
+              </div>
+
+              {/* ACTIONS */}
+              <div className="event-card-actions">
+                <button
+                  className="cancel-btn"
+                  onClick={() => handleCancel(event._id)}
+                >
+                  Cancel
+                </button>
+
+                <div className="joined-status">Joined</div>
+              </div>
             </div>
-          )}
-        
-      </main>
-    </>
+          ))}
+        </div>
+      )}
+    </main>
   );
 };
 

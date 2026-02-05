@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import "../../css/EventDetails.css";
+import toast from "react-hot-toast";
 
 const EventDetails = () => {
   const { id } = useParams();
@@ -24,6 +25,26 @@ const EventDetails = () => {
     };
     fetchEventDetails();
   }, [id, token]);
+
+  const handleJoinEvent = () => {
+    const storedEvents =
+      JSON.parse(localStorage.getItem("myEvents")) || [];
+
+    // prevent duplicate join
+    const alreadyJoined = storedEvents.some(
+      (e) => e._id === event._id
+    );
+
+    if (alreadyJoined) {
+      toast.error("You already joined this event");
+      return;
+    }
+
+    storedEvents.push(event);
+    localStorage.setItem("myEvents", JSON.stringify(storedEvents));
+
+    toast.success("Event joined successfully 🎉");
+  };
 
   if (loading) return <main className="admin-main"><p className="empty-text">Loading details...</p></main>;
   if (!event) return <main className="admin-main"><p className="empty-text">Event not found.</p></main>;
@@ -68,7 +89,15 @@ const EventDetails = () => {
             <span className="square-green"></span>
             {event.slots || 0} Slots Left
           </div>
-          <button className="joined-btn">Joined</button>
+          <button
+             className="joined-btn"
+             onClick={() => {
+             console.log("JOIN BUTTON CLICKED");
+            handleJoinEvent();
+           }}
+         >
+           Join
+          </button>
         </div>
       </div>
     </main>

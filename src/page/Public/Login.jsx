@@ -24,14 +24,19 @@ const Login = () => {
 
    if (email === "admin@gmail.com" && password === "admin123") {
     localStorage.setItem("role", "admin");
+    localStorage.setItem("token", "admin-token"); // <-- add this
     navigate("/admin/dashboard", { replace: true }); // Correct path
     return;
   }
 
   // Normal user
    localStorage.setItem("role", "user");
+   localStorage.setItem("token", "user-token"); // <-- add this
+
    navigate("/user/dashboard", { replace: true }); // Correct path
   };
+
+
 
 
   return (

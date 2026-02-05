@@ -37,7 +37,7 @@ function App() {
             <Route path="dashboard" element={<UserDashboard />} />
             <Route path="event-details/:id" element={<EventDetails/>}/>
             <Route path="profile" element={<ProfilePage />} />
-            <Route path="myEvents" element={<MyEventPage />} />
+            <Route path="my-events" element={<MyEventPage />} />
             <Route path="forgetpassword" element={<ForgetPassword/>}/>
           </Route>
         </Route>

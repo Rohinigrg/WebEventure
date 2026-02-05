@@ -40,6 +40,8 @@ const ManageEvents = () => {
          formData.append(key, eventData[key]);
        }
      });
+    console.log("Sending to backend:", Object.fromEntries(formData));
+
 
 
     try {

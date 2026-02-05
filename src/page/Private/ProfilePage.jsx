@@ -27,6 +27,31 @@ const UserProfile = () => {
     }
   }, []);
 
+  useEffect(() => {
+  try {
+    const storedUser = localStorage.getItem("user");
+
+    if (!storedUser) return;
+
+    const user = JSON.parse(storedUser);
+
+    setUserData({
+      fullName: user.fullName ?? "",
+      userName: user.userName ?? "",
+      email: user.email ?? "",
+      joined: user.createdAt
+        ? new Date(user.createdAt).toDateString()
+        : "—",
+      avatar: user.avatar && user.avatar !== ""
+        ? user.avatar
+        : "https://via.placeholder.com/150",
+    });
+  } catch (err) {
+    console.error("Failed to load user from localStorage", err);
+  }
+}, []);
+
+
   return (
     <div className="profile-page-container">
       {/* 1. Header Bar */}

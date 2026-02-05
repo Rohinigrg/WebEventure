@@ -30,13 +30,13 @@ const handleDelete = async (id) => {
 };
 
 const formatTime = (time) => {
+  if (!time) return "Not specified";
   const [h, m] = time.split(":");
-  const hour = parseInt(h);
+  const hour = parseInt(h, 10);
   const ampm = hour >= 12 ? "PM" : "AM";
   const formattedHour = hour % 12 || 12;
   return `${formattedHour}:${m} ${ampm}`;
 };
-
 
   return (
     <>
@@ -86,7 +86,7 @@ const formatTime = (time) => {
                 <h3>{event.title}</h3>
                 <p>📍 {event.location}</p>
                 <p>📅 {new Date(event.date).toLocaleDateString()}</p>
-                <p>🕒 {event.time}</p>
+                <p>🕒 {formatTime(event.startTime)} - {formatTime(event.endTime)}</p>
                 <p>🎫 Slots: {event.slots}</p>
                 <p className="event-desc">☰ {event.description}</p>
 
