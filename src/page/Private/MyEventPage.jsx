@@ -26,7 +26,7 @@ const MyEvents = () => {
     if (!confirmCancel) return;
 
     const updatedEvents = myEvents.filter(
-      (event) => event._id !== eventId
+      (event) => event.id !== eventId
     );
 
     localStorage.setItem("myEvents", JSON.stringify(updatedEvents));
@@ -51,7 +51,7 @@ const MyEvents = () => {
       ) : (
         <div className="my-events-list">
           {myEvents.map((event) => (
-            <div className="joined-event-card" key={event._id}>
+            <div className="joined-event-card" key={event.id}>
               {/* IMAGE */}
               <div className="event-card-img">
                 <img
@@ -74,7 +74,9 @@ const MyEvents = () => {
                   🗓️ {new Date(event.date).toLocaleDateString()}
                 </p>
 
-                <p className="event-meta">🕒 {event.time || "N/A"}</p>
+                <p className="event-meta">
+                  🕒 {event.startTime} - {event.endTime}
+               </p>
 
                 <p className="event-description">
                   {event.description}
@@ -85,7 +87,7 @@ const MyEvents = () => {
               <div className="event-card-actions">
                 <button
                   className="cancel-btn"
-                  onClick={() => handleCancel(event._id)}
+                  onClick={() => handleCancel(event.id)}
                 >
                   Cancel
                 </button>

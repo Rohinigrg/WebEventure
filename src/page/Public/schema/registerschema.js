@@ -1,11 +1,11 @@
 import * as z from "zod";
 
 export const registerSchema = z.object({
-  fullname: z
+  fullName: z
     .string()
     .min(1, "Please enter your full name"),
 
-  username: z
+  userName: z
     .string()
     .min(1, "Please enter your username"),
 

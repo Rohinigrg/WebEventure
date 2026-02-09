@@ -8,7 +8,8 @@ const ManageEvents = () => {
     title: "",
     location: "",
     date: "",
-    time: "",
+    startTime: "",
+    endTime:"",
     description: "",
     slots: "",
     image: null,
@@ -40,7 +41,9 @@ const ManageEvents = () => {
          formData.append(key, eventData[key]);
        }
      });
-    console.log("Sending to backend:", Object.fromEntries(formData));
+     for (let pair of formData.entries()) {
+       console.log(pair[0], pair[1]);
+      }
 
 
 

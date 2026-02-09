@@ -4,6 +4,7 @@ import '../../css/Login.css';
 import Logoo from "../../assets/Logoo.png";
 import viewIcon from "../../assets/view.png";
 import hideIcon from "../../assets/hide.png";
+import { apiRequest } from "../../utils/api";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -13,31 +14,36 @@ const Login = () => {
 
   const navigate = useNavigate(); // 👈 added
 
-  const handleLogin = (e) => {
-   e.preventDefault();
-   setError("");
+const handleLogin = async (e) => {
+  e.preventDefault();
+  setError("");
 
-   if (!email || !password) {
-     setError("Please fill all fields");
-     return;
-   }
+  try {
+    const res = await apiRequest("POST", "/auth/login", {
+      data: {
+        email,
+        password,
+      },
+    });
 
-   if (email === "admin@gmail.com" && password === "admin123") {
-    localStorage.setItem("role", "admin");
-    localStorage.setItem("token", "admin-token"); // <-- add this
-    navigate("/admin/dashboard", { replace: true }); // Correct path
-    return;
+    console.log("LOGIN RESPONSE:", res);
+
+    const { user, access_token } = res;
+
+    localStorage.setItem("role", user.role);
+    localStorage.setItem("token", access_token);
+    localStorage.setItem("user", JSON.stringify(user));
+
+    navigate(
+      user.role === "admin"
+        ? "/admin/dashboard"
+        : "/user/dashboard",
+      { replace: true }
+    );
+  } catch (err) {
+    setError(err.message || "Login failed");
   }
-
-  // Normal user
-   localStorage.setItem("role", "user");
-   localStorage.setItem("token", "user-token"); // <-- add this
-
-   navigate("/user/dashboard", { replace: true }); // Correct path
-  };
-
-
-
+};
 
   return (
     <div className="login-page">

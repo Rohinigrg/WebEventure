@@ -32,8 +32,8 @@ export default function Register() {
     setLoading(true);
 
     const payload = {
-      fullname: data.fullname,
-      username: data.username,
+      fullName: data.fullName,
+      userName: data.userName,
       email: data.email,
       password: data.password,
     };
@@ -68,12 +68,12 @@ export default function Register() {
 
             {/* Full Name */}
             <label className="input-label">Full Name</label>
-            <input {...register("fullname")} />
+            <input {...register("fullName")} />
             <p className="error">{errors.fullname?.message}</p>
 
             {/* Username */}
             <label className="input-label">Username</label>
-            <input {...register("username")} />
+            <input {...register("userName")} />
             <p className="error">{errors.username?.message}</p>
 
             {/* Email */}
