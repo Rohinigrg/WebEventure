@@ -5,8 +5,8 @@ import Register from "./page/Public/Register";
 import PrivateRoutes from "./Routes/PrivateRoutes";
 
 // Layouts
-import UserLayout from "./layouts/UserLayout";
 import AdminLayout from "./layouts/AdminLayout";
+import UserLayout from "./Layouts/UserLayout";
 
 // User pages
 import UserDashboard from "./page/Private/UserDashboard";

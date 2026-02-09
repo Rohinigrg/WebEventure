@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../css/ProfilePage.css";
+import toast from "react-hot-toast";
+import { apiRequest } from "../../utils/api";
 
 const UserProfile = () => {
   const navigate = useNavigate();
@@ -50,6 +52,42 @@ const UserProfile = () => {
     console.error("Failed to load user from localStorage", err);
   }
 }, []);
+  
+   const handleSave = async () => {
+  try {
+    const formData = new FormData();
+    formData.append("fullName", userData.fullName);
+    formData.append("userName", userData.userName);
+
+    if (userData.avatarFile) {
+      formData.append("avatar", userData.avatarFile);
+    }
+
+    const res = await apiRequest("PUT", "/users/profile", {
+      data: formData,
+      headers: { "Content-Type": "multipart/form-data" },
+    });
+
+    const updatedUser = res.user;
+
+    localStorage.setItem("user", JSON.stringify(updatedUser));
+
+    setUserData((prev) => ({
+      ...prev,
+      fullName: updatedUser.fullName,
+      userName: updatedUser.userName,
+      avatar: updatedUser.avatar
+        ? `http://localhost:5000/${updatedUser.avatar}?t=${Date.now()}`
+        : prev.avatar,
+    }));
+
+    setIsEditing(false);
+    toast.success("Profile updated successfully 🎉");
+  } catch (err) {
+    toast.error("Failed to update profile ❌");
+  }
+};
+
 
 
   return (
@@ -67,8 +105,35 @@ const UserProfile = () => {
           {/* Left: Avatar & Edit Button */}
           <div className="profile-left-section">
             <div className="avatar-circle">
-              <img src={userData.avatar} alt="Profile" />
+               <img
+                 src={
+                   userData.avatar.startsWith("http")
+                    ? userData.avatar
+                    : `http://localhost:5000/${userData.avatar}`
+                  }
+                   alt="Profile"
+               />
+
             </div>
+
+            {isEditing && (
+              <input
+                 type="file"
+                accept="image/*"
+                onChange={(e) => {
+                  const file = e.target.files[0];
+                  if (!file) return;
+
+                  setUserData({
+                    ...userData,
+                    avatarFile: file,
+                    avatar: URL.createObjectURL(file), // 👈 instant preview
+                    });
+                  }}
+                />
+
+          )}
+
             <button className="edit-profile-btn" onClick={() => setIsEditing(!isEditing)}>
               {isEditing ? "Cancel" : "Edit Profile"}
             </button>
@@ -98,9 +163,10 @@ const UserProfile = () => {
 
             <div className="profile-actions-container">
               {isEditing && (
-                <button className="save-profile-btn" style={{ backgroundColor: '#10b981', color: 'white', padding: '10px', borderRadius: '8px', border: 'none', cursor: 'pointer' }}>
+                <button className="save-profile-btn" onClick={handleSave}>
                   Save Changes
                 </button>
+
               )}
               <button className="profile-logout-btn" onClick={() => { localStorage.clear(); navigate("/login"); }}>Log Out</button>
               <button className="delete-account-btn">Delete Account</button>

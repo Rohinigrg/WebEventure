@@ -27,7 +27,7 @@ const UserLayout = () => {
 
           <button
             className={`menu-item ${location.pathname === "/user/myEvents" ? "active" : ""}`}
-            onClick={() => navigate("/user/myEvents")}
+            onClick={() => navigate("/user/my-events")}
           >
             My Events
           </button>

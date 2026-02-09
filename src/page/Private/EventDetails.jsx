@@ -27,24 +27,22 @@ const EventDetails = () => {
   }, [id, token]);
 
   const handleJoinEvent = () => {
-    const storedEvents =
-      JSON.parse(localStorage.getItem("myEvents")) || [];
+  const storedEvents = JSON.parse(localStorage.getItem("myEvents")) || [];
 
-    // prevent duplicate join
-    const alreadyJoined = storedEvents.some(
-      (e) => e._id === event._id
-    );
+  // Use `id` consistently
+  const alreadyJoined = storedEvents.some((e) => e.id === event.id);
 
-    if (alreadyJoined) {
-      toast.error("You already joined this event");
-      return;
-    }
+  if (alreadyJoined) {
+    toast.error("You already joined this event ❌");
+    return;
+  }
 
-    storedEvents.push(event);
-    localStorage.setItem("myEvents", JSON.stringify(storedEvents));
+  const updatedEvents = [...storedEvents, event];
+  localStorage.setItem("myEvents", JSON.stringify(updatedEvents));
 
-    toast.success("Event joined successfully 🎉");
-  };
+  toast.success("Event joined successfully 🎉");
+};
+
 
   if (loading) return <main className="admin-main"><p className="empty-text">Loading details...</p></main>;
   if (!event) return <main className="admin-main"><p className="empty-text">Event not found.</p></main>;
