@@ -20,15 +20,16 @@ const MyEvents = () => {
 
   // Cancel (remove) event
   const handleCancel = (eventId) => {
-  const confirmCancel = window.confirm("Are you sure you want to cancel this event?");
-  if (!confirmCancel) return; // user clicked Cancel
+  const updatedEvents = myEvents.filter(
+    (event) => event.id !== eventId
+  );
 
-  const updatedEvents = myEvents.filter((event) => event.id !== eventId);
   localStorage.setItem("myEvents", JSON.stringify(updatedEvents));
   setMyEvents(updatedEvents);
 
   toast.success("Event cancelled successfully 🎉");
 };
+
 
 
   return (

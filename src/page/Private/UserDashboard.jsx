@@ -6,6 +6,8 @@ import "../../css/UserDashboard.css";
 const UserDashboard = () => {
   const navigate = useNavigate();
   const [events, setEvents] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+
 
   // Fetch events from backend
   useEffect(() => {
@@ -17,6 +19,9 @@ const UserDashboard = () => {
       .catch((err) => console.error(err));
   }, []);
 
+  const user = JSON.parse(localStorage.getItem("user"));
+
+
 const formatTime = (time) => {
   if (!time) return "Not specified";
   const [h, m] = time.split(":");
@@ -25,6 +30,11 @@ const formatTime = (time) => {
   const formattedHour = hour % 12 || 12;
   return `${formattedHour}:${m} ${ampm}`;
 };
+
+const filteredEvents = events.filter((event) =>
+  event.title.toLowerCase().includes(searchTerm.toLowerCase())
+);
+
 
   return (
   
@@ -35,7 +45,8 @@ const formatTime = (time) => {
       <header className="welcome-header">
         <div className="user-profile-left">
           <div className="icon-circle">👤</div>
-          <h2>Welcome, Rohini</h2>
+          <h2>Welcome, {user?.fullName || user?.name || "User"}</h2>
+
         </div>
 
         {/* Profile icon */}
@@ -52,7 +63,13 @@ const formatTime = (time) => {
       <div className="search-section">
         <div className="search-input-wrapper">
           <span className="search-icon">🔍</span>
-          <input type="text" placeholder="Search" />
+          <input
+             type="text"
+             placeholder="Search by event name..."
+             value={searchTerm}
+             onChange={(e) => setSearchTerm(e.target.value)}
+          />
+
         </div>
       </div>
 
@@ -61,7 +78,8 @@ const formatTime = (time) => {
         {events.length === 0 ? (
           <div className="no-events-card">No events available</div>
         ) : (
-          events.map((event) => (
+          filteredEvents.map((event) => (
+
             <div className="event-card" key={event.id || event._id}
                onClick={() => navigate(`/user/event-details/${event.id || event._id}`)}
                style={{ cursor: "pointer" }} >
