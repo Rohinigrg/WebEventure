@@ -80,7 +80,10 @@ const handleLogin = async (e) => {
                   placeholder="Enter password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                />
+                  autoComplete="off"   // disables browser autofill eye icon
+                  spellCheck="false"
+                  name="password"
+                  />
 
                 <img
                   src={showPassword ? viewIcon: hideIcon}

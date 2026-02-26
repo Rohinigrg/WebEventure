@@ -5,29 +5,41 @@ import toast from "react-hot-toast";
 
 const AdminDashboard = () => {
   const [events, setEvents] = useState([]);
-  const [totalUsers, setTotalUsers] = useState(3);
+  const [totalUsers, setTotalUsers] = useState(0);
 
-useEffect(() => {
-  axios
-    .get("http://localhost:5000/api/events")
-    .then((res) => {
-      setEvents(res.data.data); // because backend sends { data: events }
-    })
-    .catch((err) => console.error(err));
-}, []);
+  useEffect(() => {
+    fetchEvents();
+    fetchUsers();
+  }, []);
 
-const handleDelete = async (id) => {
-  try {
-    await axios.delete(`http://localhost:5000/api/events/${id}`);
+  const fetchEvents = async () => {
+    try {
+      const res = await axios.get("http://localhost:5000/api/events");
+      setEvents(res.data.data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
-    // Remove from UI instantly
-    setEvents(prev => prev.filter(event => event.id !== id));
+  const fetchUsers = async () => {
+    try {
+      const res = await axios.get("http://localhost:5000/api/users");
+      setTotalUsers(res.data.data.length);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
-    toast.success("Event deleted successfully!");
-  } catch (err) {
-    toast.error("Failed to delete event");
-  }
-};
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`http://localhost:5000/api/events/${id}`);
+      setEvents((prev) => prev.filter((event) => event.id !== id));
+      toast.success("Event deleted successfully!");
+    } catch (err) {
+      toast.error("Failed to delete event");
+    }
+  };
+
 
 const formatTime = (time) => {
   if (!time) return "Not specified";

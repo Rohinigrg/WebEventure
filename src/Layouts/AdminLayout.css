@@ -71,7 +71,8 @@
 }
 
 .logout-btn {
-  margin-top: auto;  /* 🔥 pushes logout to bottom properly */
+  margin-top: auto; 
+  text-align: center;
 }
 .admin-main {
   flex: 1;
