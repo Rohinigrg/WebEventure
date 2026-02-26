@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { apiRequest } from "../../utils/api.js";
 import { useNavigate, Link } from "react-router-dom";
-import Logoo from "../../assets/Logoo.png";
+import Loggo from "../../assets/Loggo.png";
 import '../../css/Register.css';
 import { registerSchema } from "./schema/registerschema.js";
 import viewIcon from "../../assets/view.png";
@@ -54,7 +54,7 @@ export default function Register() {
 
         {/* Left Section */}
         <div className="register-left">
-          <img src={Logoo} alt="Logoo" className="register-logo" />
+          <img src={Loggo} alt="Loggo" className="register-logo" />
           <h2>Eventure</h2>
           <p>Where event meets excellence.</p>
         </div>

@@ -30,6 +30,7 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/forgot-password" element={<ForgetPassword />} /> 
 
         {/* USER PROTECTED */}
         <Route element={<PrivateRoutes allowedRoles={["user"]} />}>
@@ -38,7 +39,6 @@ function App() {
             <Route path="event-details/:id" element={<EventDetails/>}/>
             <Route path="profile" element={<ProfilePage />} />
             <Route path="my-events" element={<MyEventPage />} />
-            <Route path="forgetpassword" element={<ForgetPassword/>}/>
           </Route>
         </Route>
 

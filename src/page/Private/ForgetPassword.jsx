@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../css/ForgetPassword.css";
-import Logoo from "../../assets/Logoo.png";
+import Loggo from "../../assets/Loggo.png";
 
 const ForgetPassword = () => {
   const [email, setEmail] = useState("");
@@ -20,7 +20,7 @@ const ForgetPassword = () => {
         {/* Left Branding Section */}
         <div className="forget-left">
           <div className="logo-container">
-            <img src={Logoo} alt="Logo" className="forget-logo" />
+            <img src={Loggo} alt="Logo" className="forget-logo" />
             <h2>Eventure</h2>
           </div>
           <p>Where event meets excellence.</p>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import '../../css/Login.css';
-import Logoo from "../../assets/Logoo.png";
+import Loggo from "../../assets/Loggo.png";
 import viewIcon from "../../assets/view.png";
 import hideIcon from "../../assets/hide.png";
 import { apiRequest } from "../../utils/api";
@@ -51,7 +51,7 @@ const handleLogin = async (e) => {
 
         {/* Left Section */}
         <div className="login-left">
-          <img src={Logoo} alt="Logo" className="login-logo" />
+          <img src={Loggo} alt="Logo" className="login-logo" />
           <h2>Eventure</h2>
           <p>Where event meets excellence.</p>
         </div>
@@ -97,7 +97,7 @@ const handleLogin = async (e) => {
             {error && <p className="error-text">{error}</p>}
 
             <p className="forgot"> 
-               <Link to="/forgot-password">Forgot Password?</Link>
+              <Link to="/forgot-password">Forgot Password?</Link>
             </p>
 
             <button type="submit" className="login-btn">

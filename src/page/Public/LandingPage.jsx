@@ -1,7 +1,7 @@
 import React from "react";
 import '../../css/LandingPage.css';
 import landingbg from "../../assets/landingbg.png";
-import Logoo from "../../assets/Logoo.png";
+import Loggo from "../../assets/Loggo.png";
 import { Link } from "react-router-dom";
 
 
@@ -15,7 +15,7 @@ const LandingPage = () => {
 <       div className="content-wrapper">
         <nav className="navbar">
           <div className="logo">
-            <img src={Logoo} alt="Logo" />
+            <img src={Loggo} alt="Logo" />
           </div>
           <div className="nav-buttons">
             <Link to="/login" className="btn outline">Login</Link>
