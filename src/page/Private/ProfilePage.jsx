@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../css/ProfilePage.css";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import { apiRequest } from "../../utils/api";
 
 const UserProfile = () => {
@@ -87,12 +87,41 @@ const UserProfile = () => {
     toast.error("Failed to update profile ❌");
   }
 };
+const handleDelete = async () => {
+  const confirmDelete = window.confirm("Are you sure you want to delete your account?");
+  if (!confirmDelete) return;
 
+  const token = localStorage.getItem("token");
 
+  try {
+    const res = await fetch("http://localhost:5000/api/users/profile", {
+      method: "DELETE",
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.message);
+
+    // 1. Clear credentials immediately
+    localStorage.clear();
+
+    // 2. Show the toast
+    toast.success("Account deleted successfully ✅");
+
+    // 3. Force navigation after a short delay (1.5 seconds)
+    setTimeout(() => {
+      navigate("/login", { replace: true });
+    }, 1500);
+
+  } catch (err) {
+    toast.error(err.message || "Failed to delete account", { duration: 2000 });
+  }
+};
 
   return (
     <div className="profile-page-container">
       {/* 1. Header Bar */}
+      <Toaster position="top-right" />
       <header className="profile-header-bar">
         <span className="header-icon">👤</span>
         <h2 style={{ margin: 0 }}>Profile</h2>
@@ -115,6 +144,8 @@ const UserProfile = () => {
                />
 
             </div>
+
+
 
             {isEditing && (
               <input
@@ -169,7 +200,9 @@ const UserProfile = () => {
 
               )}
               <button className="profile-logout-btn" onClick={() => { localStorage.clear(); navigate("/login"); }}>Log Out</button>
-              <button className="delete-account-btn">Delete Account</button>
+              <button className="delete-account-btn" onClick={handleDelete}>
+                  Delete Account
+                </button>
             </div>
           </div>
         </div>

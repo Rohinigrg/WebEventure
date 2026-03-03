@@ -1,16 +1,12 @@
-import { Routes, Route } from "react-router-dom";
-import LandingPage from "../page/Public/LandingPage";
-import Login from "../page/Public/Login";
-import Register from "../page/Public/Register";
+import { Navigate, Outlet } from "react-router-dom";
 
 const PublicRoutes = () => {
-  return (
-    <Routes>
-      <Route path="/" element={<LandingPage />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-    </Routes>
-  );
+  const token = localStorage.getItem("token");
+  if (token) {
+    const role = localStorage.getItem("role");
+    return <Navigate to={role === "admin" ? "/admin/dashboard" : "/user/dashboard"} replace />;
+  }
+  return <Outlet />;
 };
 
 export default PublicRoutes;

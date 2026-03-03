@@ -1,7 +1,7 @@
 // src/layouts/AdminLayout.jsx
 import React from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
-import Logoo from "../assets/Logoo.png";
+import Loggo from "../assets/Loggo.png";
 import "../Layouts/AdminLayout.css";
 
 const AdminLayout = () => {
@@ -13,7 +13,7 @@ const AdminLayout = () => {
       {/* SIDEBAR */}
       <aside className="admin-sidebar">
         <div className="admin-logo-section">
-          <img src={Logoo} alt="Logo" className="admin-logo-img" />
+          <img src={Loggo} alt="Logo" className="admin-logo-img" />
           <span className="admin-logo-text">Eventure</span>
         </div>
 

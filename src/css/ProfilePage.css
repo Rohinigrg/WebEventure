@@ -115,3 +115,16 @@
   font-weight: bold;
   cursor: pointer;
 }
+
+/* Responsive layout */
+@media (max-width: 900px) {
+  .profile-page .card-content {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .profile-page .left-box,
+  .profile-page .right-box {
+    flex: 1 1 100%;
+  }
+}

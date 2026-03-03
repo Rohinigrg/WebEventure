@@ -148,3 +148,41 @@ input[type="password"]::-webkit-textfield-decoration-container {
   visibility: hidden;
   pointer-events: none;
 }
+
+/* Mobile styles */
+@media (max-width: 480px) {
+  .login-box {
+    width: 90%; /* make it smaller on mobile */
+    padding: 30px;
+  }
+
+  .login-title {
+    font-size: 22px;
+  }
+
+  .login-input {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .login-btn {
+    width: 60%;
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  .password-wrapper input.login-input {
+    padding-right: 35px; 
+  }
+
+  .eye-icon {
+    width: 20px;
+    height: 20px;
+    right: 8px;
+  }
+
+  .register-text,
+  .forget {
+    font-size: 12px;
+  }
+}

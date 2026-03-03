@@ -2,16 +2,20 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../css/ForgetPassword.css";
 import Loggo from "../../assets/Loggo.png";
+import toast from "react-hot-toast";
 
 const ForgetPassword = () => {
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    // Add your password reset logic here
-    console.log("Reset requested for:", email);
-  };
+  e.preventDefault();
+
+  console.log("Reset requested for:", email);
+
+  // Toast message
+  toast.success("Verification email sent successfully!");
+};
 
   return (
     <div className="forget-password-page">

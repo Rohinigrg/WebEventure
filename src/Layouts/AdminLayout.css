@@ -83,3 +83,49 @@
   flex-direction: column;
 }
 
+/* ================= Tablet ================= */
+@media (max-width: 1024px) {
+
+  .admin-sidebar {
+    width: 200px; /* slightly smaller */
+    padding: 20px 15px;
+  }
+
+  .admin-main {
+    padding: 25px;
+  }
+}
+
+
+/* ================= Keep Layout Same On Mobile ================= */
+@media (max-width: 768px) {
+
+  .admin-wrapper {
+    flex-direction: row;  /* 🔥 force horizontal */
+  }
+
+  .admin-sidebar {
+    width: 200px;  /* slightly smaller but still left */
+  }
+
+  .admin-main {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .admin-sidebar {
+    width: 180px;  /* smaller sidebar */
+    padding: 20px 10px;
+  }
+
+  .admin-nav-item {
+    padding: 14px;
+    font-size: 0.9rem;
+  }
+
+  .admin-main {
+    padding: 15px;
+  }
+}

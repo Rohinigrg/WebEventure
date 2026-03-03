@@ -1,7 +1,7 @@
 // src/layouts/UserLayout.jsx
 import React from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
-import Logoo from "../assets/Logoo.png";
+import Loggo from "../assets/Loggo.png";
 import "../Layouts/UserLayout.css";
 
 const UserLayout = () => {
@@ -13,7 +13,7 @@ const UserLayout = () => {
       {/* SIDEBAR */}
       <aside className="sidebar">
         <div className="logo-container">
-          <img src={Logoo} alt="Logo" className="logo-img" />
+          <img src={Loggo} alt="Logo" className="logo-img" />
           <span className="logo-text">Eventure</span>
         </div>
 
